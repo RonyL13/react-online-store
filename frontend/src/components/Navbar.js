@@ -1,12 +1,17 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { renderGallery, renderHome } from '../actions/rendererActions'
+
 const Navbar = () => {
+        const dispatch = useDispatch();
+
     return (
         <div className="navbar">
             <nav>
                 <ul>
-                    <li><a href="/">Store</a></li>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/">Contact</a></li>
-                    <li><a href="/">Something</a></li>
+                    <li><button onClick={() => {dispatch(renderHome())}}>Home</button></li>
+                    <li><button onClick={() => {dispatch(renderGallery())}}>Gallery</button></li>
+                    <li><button></button></li>
+                    <li><button></button></li>
                 </ul>
             </nav>
         </div>

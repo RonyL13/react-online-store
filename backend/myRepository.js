@@ -1,9 +1,22 @@
 const userModel = require('./models/user')
+const productModel = require('./models/product')
+
+const Product = productModel.Product;
 const User = userModel.User;
 
 
 
 module.exports = {
+    async getProducts() {
+        try {
+            const allProducts = await Product.find();
+            return allProducts;
+        }
+        catch(err) {
+            console.log(err);
+        }
+    },
+
     async createUser(userInfo) {
         try {
             const newUser = new User(userInfo);

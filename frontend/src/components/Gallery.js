@@ -1,26 +1,29 @@
 import Product from './Product.js'
+import { useState, useEffect } from 'react';
 
 const Gallery = () => {
+    const [products, setProducts] = useState([])
 
-    let products = [
-    {
-        name: 'test',
-        index: 1,
-        price: 100,
-        src: 'https://www.pngall.com/wp-content/uploads/10/Flip-Flops-PNG-Image.png'
-    },
-    {
-        name: 'testier',
-        index: 2,
-        price: 100,
-        src: 'https://www.pngall.com/wp-content/uploads/6/Sweater-PNG.png'
-    }
-]
+    useEffect(() => {
+        fetch('/api/products')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.x);
+            setProducts(data.x)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
+    }, [])
+
+    
+ 
 
     return (
-        <div>
+        <div className='gallery'>
             {products.map(product => {
-                return <Product key={product.index} item={product}/>
+                return <Product key={product._id} item={product}/>
             })}
         </div>
     )

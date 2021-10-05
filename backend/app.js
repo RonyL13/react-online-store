@@ -3,7 +3,6 @@ const app = express();
 const routes = require('./routes/routes')
 const mongoose = require('mongoose');
 const cors = require('cors');
-const myRepository = require('./myRepository');
 
 app.use(
     cors({
