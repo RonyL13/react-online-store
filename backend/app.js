@@ -3,6 +3,7 @@ const app = express();
 const routes = require('./routes/routes')
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 app.use(
     cors({
@@ -14,6 +15,7 @@ app.use(
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cookieParser());
 
 // Routing
 app.use('/api', routes);
