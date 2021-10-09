@@ -7,7 +7,7 @@ const User = userModel.User;
 
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
-    return jwt.sign({ id }, 'rental project secret', {
+    return jwt.sign({ id }, process.env.SECRET, {
         expiresIn: maxAge
     })
 }
@@ -49,8 +49,7 @@ module.exports = {
             }
         }
         catch (err) {
-            console.log(`An error occured while attempting to login: ${err}`);
-            return err;
+            return {err: err};
         }
     },
 }

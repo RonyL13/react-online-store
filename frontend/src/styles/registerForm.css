@@ -1,0 +1,99 @@
+.register-form-container {
+    background-color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 27rem;
+    margin: auto;
+    margin-top: 6rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.register-form-container h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+.register-form-container form {
+    height: inherit;
+    width: 100%;
+}
+
+.label-and-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    height: 4.5rem;
+}
+
+.label-and-input-container label {
+    display: block;
+}
+
+.label-and-input-container input {
+    width: 100%;
+    height: 1.5rem;
+    border: 1px black solid;
+    border-radius: 3rem;
+}
+
+.label-and-input-container input:placeholder-shown {
+    padding: 10px;
+}
+.label-and-input-container input:focus{
+    outline: none;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-icon {
+    margin: auto;
+    background: linear-gradient(#c43274, #660f66, #3d0a85);;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    color: white;
+}
+
+.register-error-container {
+    color: red;
+    height: 2rem;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.register-submit-btn {
+    border: none;
+    border-radius: 3rem;
+    height: 2rem;
+    width: 80%;
+    background: linear-gradient(to right, #c43274, #660f66, #3d0a85);
+    color: white;
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+.form-footer {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.success-form {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+

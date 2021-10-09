@@ -1,0 +1,26 @@
+.gallery {
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    border: black solid 1px;
+    margin: 1px;
+}
+
+.product-image-container {
+    display: flex;
+    justify-content: center;
+    border-bottom: black solid 1px;
+}
+
+.product-buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
