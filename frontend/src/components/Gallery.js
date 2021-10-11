@@ -9,7 +9,6 @@ const Gallery = () => {
         fetch('/api/products')
         .then(response => response.json())
         .then(data => {
-            console.log(data.x);
             setProducts(data.x)
         })
         .catch((err) => {

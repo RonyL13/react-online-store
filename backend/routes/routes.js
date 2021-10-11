@@ -5,6 +5,8 @@ const path = require('path');
 const jwt = require('jsonwebtoken')
 const userModel = require('../models/user')
 
+const User = userModel.User;
+
 
 router.get('/products', async (req, res) => {
     const x = await myRepository.getProducts();
@@ -13,15 +15,16 @@ router.get('/products', async (req, res) => {
 
 router.post('/authenticate', async (req, res) => {
     const token = req.cookies.jwt;
-    
+
     // Check if json web token exists and is verified
     if (token) {
-        jwt.verify(token, process.env.SECRET, (err, decodedToken) => {
+        jwt.verify(token, process.env.SECRET, async (err, decodedToken) => {
             if (err) {
                 res.send({isLoggedIn: false});
             } else {
-                console.log(decodedToken);
-                res.send({isLoggedIn: true});
+                let user = await User.findById(decodedToken.id)
+                
+                res.send({isLoggedIn: true, username: user.username});
             }
         })
     } else {

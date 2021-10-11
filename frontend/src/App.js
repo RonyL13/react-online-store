@@ -3,15 +3,14 @@ import Navbar from './components/Navbar';
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import FormSuccess from './components/FormSuccess'
+import Cart from './components/Cart'
 import { useSelector, useDispatch } from 'react-redux';
-import { renderFormSuccess } from '../../frontend/src/actions/rendererActions'
 import { login, logout } from '../../frontend/src/actions/loggedInActions'
-
-
 
 import './app.css';
 
 const App = () => {
+    const state = useSelector(state => state);
     const dispatch = useDispatch();
 
         const authenticate = () => {
@@ -24,10 +23,8 @@ const App = () => {
            .then(response => response.json())
            .then(data => {
                if (data.isLoggedIn) {
-                   console.log(data);
-                    dispatch(login())
+                   dispatch(login(data))
                } else {
-                console.log(data);
                 dispatch(logout())
             }
            })
@@ -36,39 +33,15 @@ const App = () => {
            })
        }
        authenticate();
- 
 
-
-    function submitRegisterForm(values) {
-         fetch('api/create-user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.x.err) {
-                console.log(data.x.err);
-            } else {
-                dispatch(renderFormSuccess())
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
-    
     return (
         <div>
             <Navbar />
-            {useSelector(state => state.renderer) === 'LOGIN' ? <LoginForm /> : ''}
-            {useSelector(state => state.renderer) === 'REGISTER' ? <RegisterForm submitForm={submitRegisterForm} /> : ''}
-            {useSelector(state => state.renderer) === 'FORM_SUCCESS' ? <FormSuccess /> : ''}
-            {useSelector(state => state.renderer) === 'GALLERY' ? <Gallery /> : ''}
-            {useSelector(state => state.isLoggedIn === 'LOGGEDIN') ? <p>Logged in</p> : <p>Logged out</p>}
-        
+            {state.renderer === 'LOGIN' ? <LoginForm /> : ''}
+            {state.renderer === 'REGISTER' ? <RegisterForm /> : ''}
+            {state.renderer === 'FORM_SUCCESS' ? <FormSuccess /> : ''}
+            {state.renderer === 'GALLERY' ? <Gallery /> : ''}
+            {state.renderer === 'CART' ? <Cart /> : ''}
         </div>
     )
 }

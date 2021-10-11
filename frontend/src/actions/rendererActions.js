@@ -22,6 +22,12 @@ export const renderLogin = () => {
     }
 }
 
+export const renderCart = () => {
+    return {
+        type: 'CART'
+    }
+}
+
 export const renderFormSuccess = () => {
     return {
         type: 'FORM_SUCCESS'

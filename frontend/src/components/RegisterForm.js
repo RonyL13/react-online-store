@@ -1,11 +1,96 @@
-import useForm from '../customHooks/useForm';
-import validator from '../validateInfo'
-import { IconContext } from 'react-icons'
-import { CgProfile } from 'react-icons/cg'
+// import { IconContext } from 'react-icons'
+// import { CgProfile } from 'react-icons/cg'
 import '../styles/registerForm.css'
+import { useState, useEffect} from 'react'
+import { useDispatch } from 'react-redux'
+import { renderFormSuccess } from '../actions/rendererActions'
 
-const RegisterForm = ({submitForm}) => {
-    const { handleChange, values, handleSubmit, errors } = useForm(submitForm, validator);
+
+const RegisterForm = () => {
+    const dispatch = useDispatch()
+    const [values, setValues] = useState({
+        username: '',
+        password: '',
+        confirmpassword: '',
+        email: ''
+    });
+
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = e => {
+        const { name, value } = e.target
+        setValues({
+            ...values,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        setErrors(validateInfo(values));
+        setIsSubmitting(true);
+    }
+
+    useEffect(() => {
+        if(Object.keys(errors).length === 0 && isSubmitting) {
+            const submitRegisterForm = (values) => {
+                fetch('api/create-user', {
+                   method: 'POST',
+                   headers: {
+                       'Content-Type': 'application/json'
+                   },
+                   body: JSON.stringify(values)
+               })
+               .then(response => response.json())
+               .then(data => {
+                   if(data.x.err) {
+                       console.log(data.x.err);
+                   } else {
+                       dispatch(renderFormSuccess())
+                   }
+               })
+               .catch((err) => {
+                   console.log(err);
+               })
+           }
+           submitRegisterForm(values)
+        }
+    }, [errors])
+
+        const validateInfo = (values) => {
+        let errors = {};
+    
+        if(values.username) {
+            if(!values.username.trim()) {
+                errors.username = "Username is required"
+         }
+        } else {
+            errors.username = 'Username is required'
+        }
+    
+        if(!values.email) {
+            errors.email = "Email is required"
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+            errors.email = "Email address is invalid"
+        }
+    
+        if(!values.password) {
+            errors.password = 'Password is required'
+        } else if (values.password.length < 6) {
+            errors.password = 'Password cannot be shorter than 6 characters'
+        }
+    
+        if(!values.confirmpassword) {
+            errors.confirmpassword = 'Must confirm password'
+        } else if (values.password !== values.confirmpassword) {
+            errors.confirmpassword = 'Passwords do not match'
+        }
+    
+        return errors;
+    }
+
+
 
     return (
         <div className="register-form-container">

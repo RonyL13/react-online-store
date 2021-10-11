@@ -11,6 +11,9 @@ const rendererReducer = (state = 'HOME', action) => {
 
         case 'LOGIN':
             return state = 'LOGIN'
+            
+        case 'CART':
+            return state = 'CART'
 
         case 'FORM_SUCCESS':
             return state = 'FORM_SUCCESS'

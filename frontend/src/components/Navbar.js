@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { renderGallery, renderHome, renderRegister, renderLogin } from '../actions/rendererActions'
+import { renderGallery, renderHome, renderRegister, renderLogin, renderCart } from '../actions/rendererActions'
 import { logout } from '../actions/loggedInActions'
 import '../styles/navbar.css'
 
 const Navbar = () => {
+    const state =  useSelector(state => state)
+
     const dispatch = useDispatch();
 
     const logoutUser = () => {
@@ -11,8 +13,8 @@ const Navbar = () => {
             .catch((err) => {
                 console.log(err);
             })
-        dispatch(logout());
-        dispatch(renderHome());
+        dispatch(logout()); // change the isLoggedIn state 
+        dispatch(renderHome()); // Return user to home page
     }
 
     return (
@@ -21,11 +23,13 @@ const Navbar = () => {
                 <ul>
                     <li><button onClick={() => { dispatch(renderHome()) }}>Home</button></li>
                     <li><button onClick={() => { dispatch(renderGallery()) }}>Gallery</button></li>
-                    <li><button onClick={() => { dispatch(renderRegister()) }}>Register</button></li>
-                    {useSelector(state => state.isLoggedIn) === 'LOGGEDOUT' ?
-                        <li><button onClick={() => { dispatch(renderLogin()) }}>Login</button></li> :
-                        <li><button onClick={logoutUser}>Logout</button></li>}
-                    <li><button></button></li>
+                    {state.isLoggedIn === 'LOGGEDOUT' ?
+                        [<li><button onClick={() => { dispatch(renderRegister()) }}>Register</button></li>,
+                        <li><button onClick={() => { dispatch(renderLogin()) }}>Login</button></li>] :
+                        [<li><button onClick={() => { dispatch(renderCart()) }}>Cart</button></li>,                            <li>Welcome, {state.isLoggedIn}</li>,
+                        <li><button onClick={logoutUser}>Logout</button></li>
+                    ]}
+                        
                 </ul>
             </nav>
             <img src="https://faeries.com.au/wp-content/themes/faerie-shop/img/element-art/purple-wave-bottom2.png" alt="" />
