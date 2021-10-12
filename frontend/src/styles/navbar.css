@@ -48,3 +48,8 @@
     cursor: inherit;
     border: none;
 }
+
+.cart-icon {
+    font-size: 1.5rem;
+
+}

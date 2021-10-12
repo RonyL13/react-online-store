@@ -1,5 +1,3 @@
-// import { IconContext } from 'react-icons'
-// import { CgProfile } from 'react-icons/cg'
 import '../styles/registerForm.css'
 import { useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux'

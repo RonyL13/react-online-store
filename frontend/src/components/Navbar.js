@@ -3,6 +3,9 @@ import { renderGallery, renderHome, renderRegister, renderLogin, renderCart } fr
 import { logout } from '../actions/loggedInActions'
 import '../styles/navbar.css'
 
+import { IconContext } from 'react-icons'
+import { BsFillCartFill } from 'react-icons/bs'
+
 const Navbar = () => {
     const state =  useSelector(state => state)
 
@@ -26,7 +29,12 @@ const Navbar = () => {
                     {state.isLoggedIn === 'LOGGEDOUT' ?
                         [<li><button onClick={() => { dispatch(renderRegister()) }}>Register</button></li>,
                         <li><button onClick={() => { dispatch(renderLogin()) }}>Login</button></li>] :
-                        [<li><button onClick={() => { dispatch(renderCart()) }}>Cart</button></li>,                            <li>Welcome, {state.isLoggedIn}</li>,
+                        [<li><button onClick={() => { dispatch(renderCart()) }}>
+                        <IconContext.Provider value={{ className: "cart-icon" }}>
+                        <div className="icon-container">
+                            <BsFillCartFill />
+                        </div>
+                        </IconContext.Provider></button></li>,                            <li>Welcome, {state.isLoggedIn}</li>,
                         <li><button onClick={logoutUser}>Logout</button></li>
                     ]}
                         

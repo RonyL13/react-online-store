@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../actions/cartActions';
+import Counter from './Counter.js'
 import '../styles/cart.css';
 
 const Cart = () => {
@@ -47,9 +48,7 @@ const Cart = () => {
                                 <button>m</button>
                             </div>
                             <div className="item-quantity-container">
-                                <button>+</button>
-                                <p>1</p>
-                                <button>-</button>
+                                <Counter />
                             </div>
                         </div>
                         <div className="item-remove-price-container">
@@ -63,6 +62,9 @@ const Cart = () => {
                     </div>
                     )
                 }
+                <div className="cart-actions-container">
+                    {/* <button>Checkout</button> */}
+                </div>
             </div>
         </div>
     )

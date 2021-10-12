@@ -54,15 +54,6 @@
     justify-content: center;
 }
 
-.profile-icon {
-    margin: auto;
-    background: linear-gradient(#c43274, #660f66, #3d0a85);;
-    width: 25%;
-    height: 25%;
-    border-radius: 50%;
-    color: white;
-}
-
 .register-error-container {
     color: red;
     height: 2rem;
