@@ -63,6 +63,34 @@
     padding: 2px;
     border: 0;
     width: 80%;
-    height: 2.5rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.product-sizes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.sizes-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.sizes-container button {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 16px;
+    border: 0;
+    width: 3rem;
+    height: 3rem;
+    margin: 2%;
     cursor: pointer;
 }

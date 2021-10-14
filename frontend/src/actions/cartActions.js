@@ -1,7 +1,7 @@
-export const addToCart = (items) => {
+export const addToCart = (items, itemSize) => {
     return {
         type: 'ADD_TO_CART',
-        payload: items
+        payload: {items, size: itemSize}
     }
 }
 

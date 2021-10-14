@@ -45,7 +45,7 @@ const Cart = () => {
                         </div>
                         <div className="item-size-quantity-container">
                             <div className="item-size-container">
-                                <button>m</button>
+                                <button>{product.size}</button>
                             </div>
                             <div className="item-quantity-container">
                                 <Counter />
