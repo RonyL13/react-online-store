@@ -5,6 +5,7 @@ import '../styles/navbar.css'
 
 import { IconContext } from 'react-icons'
 import { BsFillCartFill } from 'react-icons/bs'
+import { CgProfile } from 'react-icons/cg'
 
 const Navbar = () => {
     const state = useSelector(state => state)
@@ -23,31 +24,42 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <nav>
-                <ul>
-                    <li><button onClick={() => { dispatch(renderHome()) }}>Home</button></li>
-                    <li><button onClick={() => { dispatch(renderGallery()) }}>Gallery</button></li>
+                <div className="navbar-container">
+                    <div className="navbar-center-container">
+                    <div><button onClick={() => { dispatch(renderHome()) }}>Home</button></div>
+                    <div><button onClick={() => { dispatch(renderGallery()) }}>Gallery</button></div>
+                    <div><button>About</button></div>
+                    <div><button>Contact</button></div>
+                </div>
 
                     {state.isLoggedIn === 'LOGGEDOUT' ?
                         <div className="navbar-right-container">
-                            <li><button onClick={() => { dispatch(renderRegister()) }}>Register</button></li>
-                            <li><button onClick={() => { dispatch(renderLogin()) }}>Login</button></li>
+                            <div><button onClick={() => { dispatch(renderRegister()) }}>Register</button></div>
+                            <div><button onClick={() => { dispatch(renderLogin()) }}>Login</button></div>
                         </div> :
-                        <div className="navbar-right-container">
-                            <button onClick={() => { dispatch(renderCart()) }}>
-                            <IconContext.Provider value={{ className: "cart-icon" }}>
-                                <div className="icon-container">
-                                    <BsFillCartFill />
+                            <div className="navbar-right-container">
+                                <div className="cart-icon-container">
+                                    <button onClick={() => { dispatch(renderCart()) }}>
+                                        <IconContext.Provider value={{ className: "cart-icon" }}>
+                                            <div className="icon-container">
+                                                <BsFillCartFill />
+                                            </div>
+                                        </IconContext.Provider></button>
                                 </div>
-                            </IconContext.Provider></button>
-                            
+
                                 <div className="username-container">
-                                    <h4>Welcome, {state.isLoggedIn}</h4>
+                                    <button>
+                                        <IconContext.Provider value={{ className: "profile-icon" }}>
+                                            <CgProfile />
+                                        </IconContext.Provider>
+                                    </button>
                                 </div>
-                            
-                            <button onClick={logoutUser}>Logout</button>
-                        </div>
-                        }
-                </ul>
+                                <div className="logout-container">
+                                    <button onClick={logoutUser}>Logout</button>
+                                </div>
+                            </div>
+                    }
+                </div>
             </nav>
             <img src="https://faeries.com.au/wp-content/themes/faerie-shop/img/element-art/purple-wave-bottom2.png" alt="" />
         </div>

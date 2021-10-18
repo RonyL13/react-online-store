@@ -7,65 +7,76 @@
     width: 100%;
 }
 
-.navbar img {
-    width: 100%;
-    height: 10rem;
-}
-
 .navbar nav {
     width: inherit; 
     height: inherit;
 }
 
-.navbar ul {
-    width: inherit;
-    list-style: none;
+.navbar img {
+    width: 100%;
+    height: 10rem;
+}
+
+.navbar-container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 3rem;
 }
 
-.navbar li {
+.navbar-center-container {
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25%;
+}
+
+.navbar-center-container div{
+    height: inherit;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-right-container {
     display: flex;
     align-items: center;
-    width: inherit;
     height: inherit;
-    width: 5rem;
+    position: absolute;
+    right: 3%;
+    justify-content: space-evenly;
+    width: 15%;
+}
+
+.navbar-right-container div{
+    height: inherit;
+    align-items: center;
+    width: 100%;
 }
 
 .navbar button:hover {
-    background: linear-gradient(to right, rgb(12, 87, 112), rgb(41, 153, 144));
-    border-radius: 2rem;
-    height: 2rem;
+    border-bottom: 0.15rem white solid;
+    height: 3.15rem;
     cursor: pointer;
 }
 
 .navbar button {
     background-color: inherit;
     color: white;
-    width: inherit;
     height: inherit;
     cursor: inherit;
     border: none;
+}
+
+.cart-icon-container {
+   display: flex;
+   align-items: center;
 }
 
 .cart-icon {
     font-size: 1.5rem;
 }
 
- .navbar-right-container {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 3%;
-    height: inherit;
-}
-
-.navbar-right-container h4 {
-    color: white;
-    padding: 0 1rem 0 2rem;
-}
-.navbar-right-container button {
-    width: 5rem;
+.profile-icon {
+    font-size: 1.5rem;
 }
