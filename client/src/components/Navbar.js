@@ -61,7 +61,6 @@ const Navbar = () => {
                     }
                 </div>
             </nav>
-            <img src="https://faeries.com.au/wp-content/themes/faerie-shop/img/element-art/purple-wave-bottom2.png" alt="" />
         </div>
     )
 }

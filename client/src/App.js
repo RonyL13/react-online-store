@@ -5,9 +5,9 @@ import LoginForm from './components/LoginForm'
 import FormSuccess from './components/FormSuccess'
 import Cart from './components/Cart'
 import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../../frontend/src/actions/loggedInActions'
+import { login, logout } from './actions/loggedInActions'
 
-import './app.css';
+import './app.css'; 
 
 const App = () => {
     const state = useSelector(state => state);
@@ -34,14 +34,26 @@ const App = () => {
        }
        authenticate();
 
+       // Finds which component to render based on redux state
+       let switchRender = () => {
+           switch (state.renderer) {
+               case 'LOGIN':
+                return <LoginForm />
+               case 'GALLERY':
+                return <Gallery />
+               case 'FORM SUCCESS':
+                return <FormSuccess />
+               case 'REGISTER':
+                return <RegisterForm />
+               case 'CART':
+                return <Cart />
+           }
+       }
+
     return (
         <div>
             <Navbar />
-            {state.renderer === 'LOGIN' ? <LoginForm /> : ''}
-            {state.renderer === 'REGISTER' ? <RegisterForm /> : ''}
-            {state.renderer === 'FORM_SUCCESS' ? <FormSuccess /> : ''}
-            {state.renderer === 'GALLERY' ? <Gallery /> : ''}
-            {state.renderer === 'CART' ? <Cart /> : ''}
+            {switchRender()}
         </div>
     )
 }

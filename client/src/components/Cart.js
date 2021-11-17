@@ -8,8 +8,8 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const removeItem = (e) => {
-        let itemId = e.target.getAttribute('index')
-        dispatch(removeFromCart(itemId))
+        let itemIndex = e.target.getAttribute('index')
+        dispatch(removeFromCart(itemIndex))
     }
 
     return (
@@ -45,18 +45,18 @@ const Cart = () => {
                         </div>
                         <div className="item-size-quantity-container">
                             <div className="item-size-container">
-                                <button>{product.size}</button>
+                                <p>{product.size}</p>
                             </div>
                             <div className="item-quantity-container">
-                                <Counter />
+                                <Counter index={state.cart.indexOf(product)}/>
                             </div>
                         </div>
                         <div className="item-remove-price-container">
                             <div className="item-remove-container">
-                                <button index={product.item._id} onClick={removeItem}>X</button>
+                                <button index={state.cart.indexOf(product)} onClick={removeItem}>X</button>
                             </div>
                             <div className="item-price-container">
-                                <p>{product.item.price}</p>
+                                <p>{product.item.price * product.quantity} &#8362;</p>
                             </div>
                         </div>
                     </div>

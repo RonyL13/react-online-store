@@ -1,9 +1,9 @@
 .navbar {
-    z-index: -1;
+    z-index: 1;
     position: fixed;
     top: 0;
     background: linear-gradient(#c43274, #7843CF );
-    height: 13rem;
+    height: 3rem;
     width: 100%;
 }
 
@@ -29,12 +29,13 @@
     height: inherit;
     align-items: center;
     justify-content: space-evenly;
-    width: 25%;
+    width: 20rem;
 }
 
 .navbar-center-container div{
     height: inherit;
     align-items: center;
+    text-align: center;
     width: 100%;
 }
 
@@ -45,12 +46,13 @@
     position: absolute;
     right: 3%;
     justify-content: space-evenly;
-    width: 15%;
+    width: 10rem;
 }
 
 .navbar-right-container div{
     height: inherit;
     align-items: center;
+    text-align: center;
     width: 100%;
 }
 

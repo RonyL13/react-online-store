@@ -94,11 +94,6 @@ const RegisterForm = () => {
         <div className="register-form-container">
             <form className ="register-form" onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
-            {/* <IconContext.Provider value={{ className: "profile-icon" }}>
-                <div className="icon-container">
-                    <CgProfile />
-                </div>
-            </IconContext.Provider> */}
                 <div className="label-and-input-container">
                     <label htmlFor="">Name</label>
                     <input type="text" name="username" placeholder="Enter your username" value={values.username} onChange={handleChange} />
