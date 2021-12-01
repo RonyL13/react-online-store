@@ -4,6 +4,7 @@ import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import FormSuccess from './components/FormSuccess'
 import Cart from './components/Cart'
+import Home from './components/Home'
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from './actions/loggedInActions'
 
@@ -37,6 +38,8 @@ const App = () => {
        // Finds which component to render based on redux state
        let switchRender = () => {
            switch (state.renderer) {
+               case 'HOME':
+                return <Home />
                case 'LOGIN':
                 return <LoginForm />
                case 'GALLERY':

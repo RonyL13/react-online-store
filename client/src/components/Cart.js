@@ -37,8 +37,8 @@ const Cart = () => {
                
             </div>
             <div className="items-container">
-                {state.cart.map(product => 
-                    <div className="item-container">
+                {state.cart.map((product, index) => 
+                    <div key={index} className="item-container">
                         <div className="item-description-container">
                             <img src={product.item.src} alt="" />
                             <p>{product.item.name}</p>

@@ -1,8 +1,8 @@
 .navbar {
     z-index: 1;
     position: fixed;
+    background-color: black;
     top: 0;
-    background: linear-gradient(#c43274, #7843CF );
     height: 3rem;
     width: 100%;
 }

@@ -1,21 +1,17 @@
 const cartReducer = (state = [], action) => {
     switch(action.type) {
         case 'ADD_TO_CART':
-        let matchFound = state.find(product => product.item === action.payload.item && product.size === action.payload.size);
-        console.log(matchFound);
-        if (matchFound) {
-            let matchIndexFound = state.findIndex(product => product.item === action.payload.item && product.size === action.payload.size);
-            let newState = state.slice(0, state.length);
-            matchFound.quantity++;
-
-            newState.splice(matchIndexFound, 1, matchFound)
-            return state = newState;
-        } else {
-            return state = [...state, {item: action.payload.item, size: action.payload.size, quantity: 1}];
-        }
+            let adjustedState = [...state];
+            let matchFound = adjustedState.find(product => product.item._id === action.payload.item._id && product.size === action.payload.size);
+            if (matchFound) {
+                matchFound.quantity++;
+            } else {
+                adjustedState.push({item: action.payload.item, size: action.payload.size, quantity: 1});
+            }
+        return adjustedState;
 
         case 'REMOVE_FROM_CART':
-        return state = state.filter(item => item !== state[action.payload]);
+            return state = state.filter(item => item !== state[action.payload]);
 
         case 'INCREMENT_QUANTITY':
             let incrementedProduct = state.filter(product => product === state[action.payload]); // Grabbing the product whose quantity we're incrementing, This is an ARRAY containing the product we wish to increment

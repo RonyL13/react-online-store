@@ -23,7 +23,7 @@ const Gallery = () => {
 
     return (
         <div className="gallery-component">
-            <div className="sidebar-container">
+            <div>
                 <Sidebar />
             </div>
             <div className='gallery'>

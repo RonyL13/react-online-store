@@ -1,5 +1,14 @@
 .sidebar-container {
-    width: 10rem;
-    height: 100vh;
+    margin-top: 3rem;
+    width: 15rem;
+    height: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title-container {
+    text-align: center;
+}
+
+.filter-group-container {
+    border-top: 1px gray solid;
 }
